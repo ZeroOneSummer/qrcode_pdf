@@ -88,7 +88,7 @@ public class ConcurrentDemo {
                     @Override
                     public void run() {
                         try {
-                            System.out.println("当前车位："+semaphore.availablePermits());
+                            System.out.println("当前剩余车位："+semaphore.availablePermits());
                             semaphore.acquire();
                             System.out.println(Thread.currentThread().getName() + "获取车位，开始停车");
                             Thread.sleep(1000);
