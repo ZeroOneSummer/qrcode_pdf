@@ -19,6 +19,12 @@ public class ClassDemo {
         private int stuNo;
         private String name;
         private char age;
+
+        public User(int stuNo, String name, char age) {
+            this.stuNo = stuNo;
+            this.name = name;
+            this.age = age;
+        }
     }
 
     public static <T> T ClassInfo(Class<T> clazz){
