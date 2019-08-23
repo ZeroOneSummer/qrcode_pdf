@@ -6,11 +6,14 @@ import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Created by pijiang on 2019/8/6.
@@ -46,6 +49,21 @@ public class FuncDemo {
         }
     }
 
+    public static void countNum() {
+        List<String> collect = Stream.of(
+                Arrays.asList(1),
+                Arrays.asList(1, 2),
+                Arrays.asList(1, 2, 3)
+        )
+                .flatMap(m -> m.stream())
+                .map(m -> String.valueOf(m))
+                .distinct()
+                .collect(Collectors.toList());
+
+        System.out.println(collect);
+        System.out.println(collect.stream().count());
+    }
+
     public static void main(String[] args) throws Exception{
         FuncDemo.init();
         Scanner scanner = new Scanner(System.in);
@@ -60,4 +78,5 @@ public class FuncDemo {
         });
         System.out.println(rs);
     }
+
 }

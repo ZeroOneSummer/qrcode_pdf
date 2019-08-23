@@ -23,7 +23,7 @@ public class AppWeb implements ApplicationListener<ContextRefreshedEvent>{
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
-        System.out.println("The app is started .");
+        System.out.println("The app is started 哦.");
     }
 
 }
