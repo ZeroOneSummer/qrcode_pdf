@@ -64,6 +64,21 @@ public class FuncDemo {
         System.out.println(collect.stream().count());
     }
 
+    //将byte[]转为16进制
+    private static String byte2Hex(byte[] bytes){
+        StringBuffer stringBuffer = new StringBuffer();
+        String hex = null;
+        for (int i=0;i<bytes.length;i++){
+            hex = Integer.toHexString(bytes[i] & 0xFF);
+            if (hex.length()==1){
+                //得到一位的进行补0操作
+                stringBuffer.append("0");
+            }
+            stringBuffer.append(hex);
+        }
+        return stringBuffer.toString();
+    }
+
     public static void main(String[] args) throws Exception{
         FuncDemo.init();
         Scanner scanner = new Scanner(System.in);
