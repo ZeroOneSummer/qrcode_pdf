@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorator="layout">
+    <head>
+        <style>
+            @page {
+                size: 210mm 297mm; /*设置纸张大小:A4(210mm 297mm)、A3(297mm 420mm) 横向则反过来*/
+                margin: 0.25in;
+                padding: 1em;
+                @bottom-center{
+                    content:"四方精创 © 版权所有";
+                    font-family: SimSun;
+                    font-size: 12px;
+                    color: red;
+                };
+                @top-center { content: element(header) };
+                @bottom-right{
+                    content:"第" counter(page) "页  共 " counter(pages) "页";
+                    font-family: SimSun;
+                    font-size: 12px;
+                    color: #000;
+                };
+            }
+            body{font-family: 'SimSun';}
+            h2{color: crimson;}
+            p{line-height:30px;}
+            ._line{text-decoration: underline; color: green}
+            ._block{display: block}
+            #_content{text-indent: 2em;}
+            #_footer{
+                height: 180px;
+                width: 180px;
+                float: right;
+                text-align: right;
+                relative: absolute;
+                top: 0;
+                right: 0;
+                background: url('http://localhost:8080/img/yz.png') no-repeat;
+                background-position: 0px -10px;
+            }
+            #_table tr:first-child{
+                text-align: center;
+            }
+            #_table tr td:nth-child(1){
+                text-align: center;
+                width: 2%;
+            }
+        </style>
+        <title>四方精创PDF</title>
+    </head>
+    <body style="font-family: 'SimSun'">
+        <p id="_header">
+            <h1 style="text-align: center" th:text="${title}">XX</h1>
+        </p>
+        <p id="_content">
+            Dear<span class="_line" th:text="${employName}">XX</span>：
+            非常高兴地通知您，经过我司的面试和讨论，我们一致认为您是我公司<span class="_line" th:text="${bgName}">XX</span>部<span class="_line" th:text="${jobName}">XX</span>
+            岗位的合适人选。根据公司的薪资福利政策，我们将给您提供以下薪酬福利待遇：
+            <h3>一、现金薪酬：</h3>
+            您的现金收入为税前RMB <span class="_line" th:text="${salary}">XX</span>元/月，公司执行<span class="_line" th:text="${cycle}">XX</span>个月月薪的薪酬制度为标准。
+            <h3>二、福利：</h3>
+            根据公司福利政策，公司为您提供以下福利项目：<br/>
+            <span class="_block">1、社会保险：为您提供国家规定的社会保险；</span>
+            <span class="_block">2、公积金：为您提供国家规定的公积金；</span>
+            <span class="_block">3、补助：公司为您提供<span class="_line" th:text="${subsidy}">XX</span>/月的补贴。</span>
+            除以上福利项目外，公司还会为您提供节日费、员工婚育礼金等，并资助员工的各项活动。
+            四方精创和谐的企业文化氛围一定会让您感受到集体的温暖。（以上员工福利待遇信息为保密资料，请勿向公司内外的其他人员透露。）
+            <h3>三、其他</h3>
+            <span class="_block">1、工作地点：</span>
+            <span class="_block">2、劳动合同期限：<span class="_line" th:text="${contractYear}">XX</span>年，其中试用期<span class="_line" th:text="${contractMonth}">XX</span>个月。</span>
+            <span class="_block">3、报到时间：<span class="_line" th:text="${registerDate}">X年X月X日</span></span>
+            <span class="_block">4、报到地点：<span class="_line" th:text="${address}">X年X月X日</span></span>
+            <span class="_block">5、报到时请携带以下材料：见附件表格</span>
+            如接受我公司的Offer，请回复邮件说明；如对Offer有任何疑问，也请尽快回复邮件说明，
+            或致电0755－9685478转<span class="_line" th:text="${extension}">XX</span>人力资源部<span class="_line" th:text="${hrName}">XX</span>联系。真诚地欢迎您的加盟，
+            让我们一同秉承企业的使命，为成为国内一流、国际知名、极具竞争力的企业而共同努力！
+            此致！
+        </p>
+        <p id="_blank">
+            <br/><br/><br/><br/><br/><br/><br/><br/>
+        </p>
+        <table id="_table" align="center" border="1" cellpadding="20" cellspacing="0" width="640">
+            <tr>
+                <th>序号</th>
+                <th>准备材料</th>
+                <th>备注</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>身份证*</td>
+                <td>核原件，收复印件1份</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>社保卡及住房公积金联名卡</td>
+                <td>各收复印件1份</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>体检报告原件*</td>
+                <td>收原件，公立三甲医院半年内有效</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>原公司离职证明原件*</td>
+                <td>收原件</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>最高学历证书原件*</td>
+                <td>核原件，收复印件1份</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>一寸白底免冠证件照*</td>
+                <td>纸质照片2张，电子照片1张</td>
+            </tr>
+        </table>
+        <br/><br/><br/>
+        <p id="_footer">
+            <p id="company" th:text="${companyName}">XX</p>
+            <p id="writeDate" th:text="${#dates.format(sendDate, 'yyyy-MM-dd')}">XX</p>
+        </p>
+    </body>
+</html>
